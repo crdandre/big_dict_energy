@@ -1,0 +1,5 @@
+include README.md
+include LICENSE
+include lm_config.yaml.example
+include .env.example
+include example_workflow.py

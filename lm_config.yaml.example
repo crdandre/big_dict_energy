@@ -1,0 +1,21 @@
+# Configuration for language models used in different tasks.
+# Each task can specify:
+#   - model_name: The model to use (required)
+#   - temperature: Sampling temperature (default: 0.9)
+#   - predictor_type: DSPy predictor class to use (default: "Predict")
+#   - api_base: Optional API endpoint override
+#   - api_key: Optional API key override
+#   - max_tokens: Optional maximum tokens limit
+#
+# Note: ensure tasks with input images use multimodal models like llama3.2-vision
+
+default:
+  model_name: "openrouter/deepseek/deepseek-chat"
+  predictor_type: "ChainOfThought"
+
+summarization:
+  model_name: "ollama_chat/llama3.2-vision:latest"
+  predictor_type: "Predict"
+  temperature: 0.9
+  max_tokens: 4096
+  api_base: "http://localhost:11435"
