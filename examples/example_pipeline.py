@@ -13,7 +13,6 @@ from big_dict_energy.utils.logging import setup_logging
 
 
 class ExampleBaseProcessor(BaseProcessor):
-    """Handles document extraction and validation"""
     def _process(self, data: dict) -> dict:
         return "Yes."
 

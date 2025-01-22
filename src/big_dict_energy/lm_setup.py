@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 from typing import Optional
+import importlib.util
 
 import dspy
 
@@ -57,7 +58,28 @@ class TaskConfig:
         return self.lm_config.create_lm()
 
 
-repo_root = Path(__file__).parent.parent.parent
+def find_repo_root() -> Path:
+    # Get the path of the current module
+    current_path = Path(importlib.util.find_spec(__name__).origin)
+    
+    # Check if we're in a site-packages directory
+    if "site-packages" in str(current_path):
+        # We're in an installed package, look for config in the project root
+        # Start from current working directory and look up
+        cwd = Path.cwd()
+        current = cwd
+        # Look up directory tree for lm_config.yaml
+        while current != current.parent:
+            if (current / "lm_config.yaml").exists():
+                return current
+            current = current.parent
+        # If we didn't find it, default to current working directory
+        return cwd
+    else:
+        # We're running from source, use the package's parent directory
+        return current_path.parent.parent
+
+repo_root = find_repo_root()
 config_path = repo_root / "lm_config.yaml"
 
 DEFAULT_YAML_CONFIG = {
