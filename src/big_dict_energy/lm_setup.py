@@ -1,11 +1,12 @@
 """Configuration for language models used in different tasks."""
-from dataclasses import dataclass
-from typing import Dict, Optional
-import dspy
 import os
+import yaml
+from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-import yaml
+from typing import Optional
+
+import dspy
 
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 OLLAMA_BASE_URL = "http://localhost:11434/"
@@ -59,14 +60,19 @@ class TaskConfig:
 repo_root = Path(__file__).parent.parent.parent
 config_path = repo_root / "lm_config.yaml"
 
-if not config_path.exists():
-    raise FileNotFoundError(
-        f"Could not find lm_config.yaml in {config_path}. "
-        "Please ensure the config file exists in the root of your repository."
-    )
+DEFAULT_YAML_CONFIG = {
+    "default": {
+        "model_name": "ollama_chat/llama3.2-vision:latest",
+        "predictor_type": "Predict"
+    }
+}
 
-with open(config_path) as f:
-    _raw_config = yaml.safe_load(f)
+try:
+    with open(config_path) as f:
+        _raw_config = yaml.safe_load(f)
+except FileNotFoundError:
+    print(f"Warning: Could not find lm_config.yaml in {config_path}. Using default configuration.")
+    _raw_config = DEFAULT_YAML_CONFIG
 
 
 DEFAULT_CONFIGS = {

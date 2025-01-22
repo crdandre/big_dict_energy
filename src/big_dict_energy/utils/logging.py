@@ -72,7 +72,7 @@ def log_step(logger_name: str = None):
         return wrapper
     return decorator
 
-def setup_logging(log_dir: Path, timestamp: str, logger_name: str = None) -> logging.Logger:
+def setup_logging(log_dir: Path = None, timestamp: str = None, logger_name: str = None) -> logging.Logger:
     """Centralized logging configuration"""
     LogContext.reset()
     
@@ -80,12 +80,15 @@ def setup_logging(log_dir: Path, timestamp: str, logger_name: str = None) -> log
     root_logger.setLevel(logging.INFO)
     root_logger.handlers = []
     
-    # Simplified formats
-    handlers = [
-        (logging.FileHandler(log_dir / f"ai_pi_{timestamp}.log"), logging.DEBUG, 
-         '%(asctime)s [%(levelname)s] %(message)s'),
-        (logging.StreamHandler(), logging.INFO, '%(message)s')
-    ]
+    # Initialize handlers list with console handler
+    handlers = [(logging.StreamHandler(), logging.INFO, '%(message)s')]
+    
+    # Add file handler only if log_dir is provided
+    if log_dir is not None and timestamp is not None:
+        handlers.append(
+            (logging.FileHandler(log_dir / f"ai_pi_{timestamp}.log"), logging.DEBUG, 
+             '%(asctime)s [%(levelname)s] %(message)s')
+        )
     
     for handler, level, format in handlers:
         handler.setLevel(level)

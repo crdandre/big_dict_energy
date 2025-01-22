@@ -1,13 +1,14 @@
 """
 Processor implementations for LLM and compute-based workflow steps.
 """
-
-import logging
-import dspy
-from dspy_workflow_builder.steps import BaseStep, LMStep
-from dspy_workflow_builder.utils.logging import log_step
-from dspy_workflow_builder.utils.text_utils import normalize_text_fields, serialize_paths
 from functools import reduce
+import logging
+
+import dspy
+
+from .steps import BaseStep, LMStep
+from .utils.logging import log_step
+from .utils.text_utils import normalize_text_fields, serialize_paths
 
 
 class BaseProcessor:

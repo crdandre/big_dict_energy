@@ -9,10 +9,10 @@ from typing import Dict, List, Type, Union
 
 import dspy
 
-from steps import BaseStep, LMStep
-from processors import BaseProcessor
-from utils.text_utils import serialize_paths
-from utils.logging import pipeline_context
+from .steps import BaseStep, LMStep
+from .processors import BaseProcessor
+from .utils.text_utils import serialize_paths
+from .utils.logging import pipeline_context
 
 
 class ValidationError(Exception):
