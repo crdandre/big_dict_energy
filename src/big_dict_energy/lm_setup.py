@@ -79,6 +79,7 @@ def find_repo_root() -> Path:
         # We're running from source, use the package's parent directory
         return current_path.parent.parent
 
+
 repo_root = find_repo_root()
 config_path = repo_root / "lm_config.yaml"
 
