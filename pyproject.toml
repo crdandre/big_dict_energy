@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "big_dict_energy"
+name = "oddspy"
 version = "0.0.1"
 description = "A composable language model workflow builder for DSPy with dictionary-based data storage"
 readme = "README.md"
@@ -74,7 +74,7 @@ unfixable = []
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 [tool.ruff.lint.isort]
-known-first-party = ["big_dict_energy"]
+known-first-party = ["oddspy"]
 
 [tool.isort]
 profile = "black"

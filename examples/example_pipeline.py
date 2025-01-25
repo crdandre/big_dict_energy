@@ -5,11 +5,11 @@ import json
 
 import dspy
 
-from big_dict_energy.lm_setup import LMForTask
-from big_dict_energy.processors import BaseProcessor, LMProcessor
-from big_dict_energy.pipeline import Pipeline, PipelineConfig
-from big_dict_energy.steps import BaseStep, LMStep
-from big_dict_energy.utils.logging import setup_logging
+from oddspy.lm_setup import LMForTask
+from oddspy.processors import BaseProcessor, LMProcessor
+from oddspy.pipeline import Pipeline, PipelineConfig
+from oddspy.steps import BaseStep, LMStep
+from oddspy.utils.logging import setup_logging
 
 
 class ExampleBaseProcessor(BaseProcessor):

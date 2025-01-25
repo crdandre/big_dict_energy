@@ -8,7 +8,7 @@ from typing import List, Dict, Any, Type, Optional, Union, TYPE_CHECKING
 from inspect import isclass
 
 import dspy
-from big_dict_energy.lm_setup import TaskConfig
+from oddspy.lm_setup import TaskConfig
 
 if TYPE_CHECKING:
     from processors import BaseProcessor

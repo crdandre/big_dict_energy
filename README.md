@@ -41,7 +41,7 @@ Alternatively for larger workflows you could pass in `depends_on=["previously_wr
 
 
 # Installation
-(you should use [`uv`](https://docs.astral.sh/uv/)) `uv pip install big_dict_energy`
+(you should use [`uv`](https://docs.astral.sh/uv/)) `uv pip install oddspy`
 
 or
 

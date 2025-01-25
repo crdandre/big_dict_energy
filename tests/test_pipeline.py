@@ -1,6 +1,6 @@
-from big_dict_energy.pipeline import Pipeline, PipelineConfig
-from big_dict_energy.processors import BaseProcessor
-from big_dict_energy.steps import BaseStep
+from oddspy.pipeline import Pipeline, PipelineConfig
+from oddspy.processors import BaseProcessor
+from oddspy.steps import BaseStep
 
 def test_pipeline():
     class TestProcessor(BaseProcessor):
