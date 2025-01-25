@@ -1,4 +1,5 @@
-# oddspy: orchstration device for dspy
+# **oddspy**
+**o**rchstration **d**evice for **dspy**
 
 I wanted a simple-ish workflow builder for LLM workflows and wanted to learn so wrote this - it's composable action blocks that all operate on a shared dictionary as the storage for output and memory. This has it's disadvantages but as long as it fits in memory, this seems useful to me for straightforward assembly of structured data through chains of LLM calls.
 
